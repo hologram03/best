@@ -10,8 +10,44 @@
 * {
   margin: 0;
   padding: 0;
-  <meta name="viewport" content="width=1024">
 }
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    @media only screen and (max-width: 767px) {
+      /* Adjust the max-width value as needed */
+
+      /* Disable responsive styles */
+      body {
+        width: 100%;
+        overflow-x: auto;
+      }
+
+      /* Force specific width */
+      .container {
+        max-width: 1200px; /* Adjust the value according to your needs */
+        margin: 0 auto;
+      }
+
+      /* Hide mobile-specific elements */
+      .mobile-only {
+        display: none;
+      }
+
+      /* Show desktop-only elements */
+      .desktop-only {
+        display: block !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Your HTML content goes here -->
+</body>
+</html>
 
 body {
   width: 100%;
