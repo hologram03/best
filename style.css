@@ -11,43 +11,6 @@
   margin: 0;
   padding: 0;
 }
-```html
-<!DOCTYPE html>
-<html>
-<head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    @media only screen and (max-width: 767px) {
-      /* Adjust the max-width value as needed */
-
-      /* Disable responsive styles */
-      body {
-        width: 100%;
-        overflow-x: auto;
-      }
-
-      /* Force specific width */
-      .container {
-        max-width: 1200px; /* Adjust the value according to your needs */
-        margin: 0 auto;
-      }
-
-      /* Hide mobile-specific elements */
-      .mobile-only {
-        display: none;
-      }
-
-      /* Show desktop-only elements */
-      .desktop-only {
-        display: block !important;
-      }
-    }
-  </style>
-</head>
-<body>
-  <!-- Your HTML content goes here -->
-</body>
-</html>
 
 body {
   width: 100%;
@@ -4547,3 +4510,27 @@ body#user #content > .thin > form[action="user.php"] td.label + td > input[type=
 body#snatchlist #SnatchData > table:nth-child(3) td:only-child {
   padding: 14px;
 }
+        function parseUA() {
+            var u = navigator.userAgent;
+            var u2 = navigator.userAgent.toLowerCase();
+            return { 
+                trident: u.indexOf('Trident') > -1, 
+                presto: u.indexOf('Presto') > -1, 
+                webKit: u.indexOf('AppleWebKit') > -1, 
+                gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, 
+                mobile: !!u.match(/AppleWebKit.*Mobile.*/), 
+                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), 
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, 
+                iPhone: u.indexOf('iPhone') > -1, 
+                iPad: u.indexOf('iPad') > -1, 
+                webApp: u.indexOf('Safari') == -1, 
+                iosv: u.substr(u.indexOf('iPhone OS') + 9, 3),
+                weixin: u2.match(/MicroMessenger/i) == "micromessenger",
+                ali: u.indexOf('AliApp') > -1,
+            };
+        }
+        var ua = parseUA();
+
+        if (ua.mobile) {
+            location.href = './pc.html';
+        }
